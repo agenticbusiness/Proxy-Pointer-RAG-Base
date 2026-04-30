@@ -1,0 +1,101 @@
+# ═══════════════════════════════════════════════════════════════
+# Proxy Pointer RAG-WASM-MCP — Pipeline Gates (Option C)
+# Forked from: _99-1 RAG-WASM/gates.yaml + MCP Server gates
+# ═══════════════════════════════════════════════════════════════
+
+gate_protocol:
+  version: "3.0-MCP-SHIM"
+  pipeline: "Proxy Pointer RAG-WASM-MCP (Option C)"
+  enforcement: "sequential"
+  max_retry_loops: 3
+
+# ═══════════════════════════════════════════════════════════════
+# INHERITED GATES (from RAG-WASM gates.yaml v2.0)
+# ═══════════════════════════════════════════════════════════════
+# All corpus_ingestion_gates (CI-0 to CI-4) APPLY AS-IS
+# All browser_index_gates (BI-0 to BI-3) APPLY AS-IS
+# All deployment_gates (D-0 to D-2) APPLY AS-IS
+inherited_from: "_99-1 Proxy Pointer RAG-WASM/gates.yaml"
+
+# ═══════════════════════════════════════════════════════════════
+# MCP SHIM GATES (NEW — Option C specific)
+# ═══════════════════════════════════════════════════════════════
+
+mcp_shim_gates:
+
+  gate_mcp0_graph_data_integrity:
+    name: "Graph Data Integrity Gate"
+    fires_on: "post-graph-generation"
+    checks:
+      - "graph_data.json exists and is valid JSON"
+      - "nodes[] array maps 1:1 to rag_corpus.json records"
+      - "Every edge has source, target, weight fields"
+      - "weight values are 1, 2, or 3 only"
+      - "No self-referencing edges (source != target)"
+      - "No duplicate edges"
+    on_fail: "Regenerate graph via generate_graph_data.py"
+
+  gate_mcp1_shim_boot:
+    name: "MCP Shim Boot Gate"
+    fires_on: "on-page-boot"
+    checks:
+      - "mcp_shim.js loaded without errors"
+      - "window.MCP object exists after boot"
+      - "MCP.vector, MCP.graph, MCP.proof are defined"
+      - "bootMCPShim() completes without exceptions"
+      - "graphData variable populated with nodes and edges"
+    on_fail: "Display error in console — MCP features degraded"
+
+  gate_mcp2_vector_parity:
+    name: "VectorAPI Parity Gate (Python vs Browser)"
+    fires_on: "post-boot"
+    checks:
+      - "MCP.vector.search('brass elbow') returns same part IDs as Python VectorAPI"
+      - "MCP.vector.search('coupling') returns same count as Python VectorAPI"
+      - "Score ranking order matches Python ranking order"
+      - "Empty query returns empty array (not full corpus)"
+    on_fail: "Flag search drift — investigate scoring differences"
+
+  gate_mcp3_graph_parity:
+    name: "GraphAPI Parity Gate (Python vs Browser)"
+    fires_on: "post-boot"
+    checks:
+      - "MCP.graph.getConnections(node) returns same edges as Python GraphAPI"
+      - "Edge weights match Python edge weights"
+      - "Disconnected nodes return empty array"
+    on_fail: "Regenerate graph_data.json from shared source"
+
+  gate_mcp4_sdk_type_contract:
+    name: "SDK Type Contract Validation Gate"
+    fires_on: "pre-deploy"
+    checks:
+      - "proxy_rag_sdk_types_browser.yaml exists"
+      - "All 3 providers documented (vector, graph, proof)"
+      - "Method signatures match actual JavaScript implementations"
+      - "Sandbox rules section present"
+    on_fail: "Update SDK type contract to match implementation"
+
+  gate_mcp5_console_interface:
+    name: "Console Interface Verification Gate"
+    fires_on: "post-deploy"
+    checks:
+      - "MCP.help() returns command list without errors"
+      - "MCP.searchAndGraph('coupling') returns results with connections"
+      - "All console.log outputs are clean (no uncaught exceptions)"
+    on_fail: "Fix JavaScript errors in mcp_shim.js"
+
+# ═══════════════════════════════════════════════════════════════
+# UNIVERSAL BINDINGS
+# ═══════════════════════════════════════════════════════════════
+universal_bindings:
+  sentinel_hook: true
+  scribe_tie_in: true
+  ucp_judge: true
+  absolute_uri_linking: true
+  standalone_sandbox: true
+  sdd_tdd_enforcement: true
+  credibility_lock: true
+  manifest_fulfillment: true
+  dumb_reader_compliance: true
+  zero_backend_mandate: true
+  mcp_shim_parity: true      # NEW: Python↔Browser result parity

@@ -1,0 +1,94 @@
+# Browser-Native MCP Shim — SDK Type Contract
+# Governance: CCO-UPC §3 (Hallucination Cross-Reference Protocol)
+# Replaces: proxy_rag_sdk_types.yaml (Python-only)
+# Runtime: Browser JavaScript (window.MCP namespace)
+
+sdk_version: "2.0-WASM"
+generated: "2026-04-30"
+sandbox_namespace: "browser-mcp-shim"
+runtime: "JavaScript (ES6+, zero-backend)"
+
+providers:
+  - namespace: "MCP.vector"
+    class: "BrowserVectorAPI"
+    description: "Full-text search against rag_corpus.json using lunr.js index with substring fallback."
+    tools:
+      search:
+        description: "Search the corpus for parts matching a natural-language query."
+        params:
+          query:
+            type: string
+            required: true
+            description: "Natural-language search query (e.g. 'brass elbow')."
+          topK:
+            type: number
+            required: false
+            default: 10
+            description: "Maximum number of results to return."
+        returns:
+          type: "Array<{score, part, node_id}>"
+          schema:
+            score: { type: number, description: "Relevance score (0.0-1.0)." }
+            part: { type: object, description: "Full part record from rag_corpus.json." }
+            node_id: { type: string, description: "Graph node ID (e.g. 'PAGE-5-EVF-001')." }
+
+  - namespace: "MCP.graph"
+    class: "BrowserGraphAPI"
+    description: "Traverse graph_data.json edges for related parts by page/size/material."
+    tools:
+      getConnections:
+        description: "Return all edges connected to a given node."
+        params:
+          nodeId:
+            type: string
+            required: true
+            description: "Graph node ID (e.g. 'PAGE-12-EVF-004')."
+        returns:
+          type: "Array<{connected_to, weight}>"
+          schema:
+            connected_to: { type: string, description: "ID of the connected node." }
+            weight: { type: number, description: "1=same page, 2=shared size, 3=shared material." }
+
+  - namespace: "MCP.proof"
+    class: "BrowserProofAPI"
+    description: "Retrieve visual proof URLs for the Hallucination Cross-Reference Protocol."
+    tools:
+      getVisualBbox:
+        description: "Return the URL to the page screenshot PNG."
+        params:
+          pageNum:
+            type: number
+            required: true
+            description: "The 1-indexed page number."
+        returns:
+          type: string
+          description: "Relative URL to pages/page_{pageNum}.png."
+
+  - namespace: "MCP"
+    class: "MCPShim"
+    description: "Convenience methods for combined operations."
+    tools:
+      searchAndGraph:
+        description: "Search + graph traversal in one call."
+        params:
+          query:
+            type: string
+            required: true
+          topK:
+            type: number
+            default: 5
+        returns:
+          type: "Array<{score, part, node_id, connections}>"
+      help:
+        description: "Print available MCP commands to console."
+        params: {}
+        returns:
+          type: string
+
+# Browser Sandbox Rules
+sandbox_rules:
+  - "All APIs are synchronous JavaScript calls — no await needed."
+  - "Access via browser DevTools console: MCP.vector.search('query')"
+  - "corpus[] array is globally accessible for direct iteration."
+  - "No server roundtrips — all compute is in-browser."
+  - "Graph data requires graph_data.json in data/ directory."

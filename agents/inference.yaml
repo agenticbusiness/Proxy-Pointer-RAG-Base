@@ -1,0 +1,57 @@
+# WASM RAG Corpus Auditor — Inference Configuration
+# Pillar 5 of 5 — Agent-Skill-Gates V2
+
+inference:
+  agent: "wasm-rag-corpus-auditor-Agent"
+  version: "1.0"
+
+  # Material inference mapping for categorization
+  material_inference:
+    brass: ["brass", "brz", "yellow brass", "red brass"]
+    copper: ["copper", "cu", "cop"]
+    cast_iron: ["cast iron", "c.i.", "ci", "cast"]
+    stainless_steel: ["stainless", "ss", "s.s.", "304", "316"]
+    black_iron: ["black iron", "b.i.", "black malleable"]
+    galvanized_steel: ["galvanized", "galv", "galv.", "zinc"]
+    composite: ["composite", "pex", "pushlock", "push-lock"]
+    cpvc: ["cpvc", "c-pvc"]
+    abs: ["abs", "a.b.s."]
+    chrome: ["chrome", "chromed", "cp"]
+    csst: ["csst", "corrugated stainless"]
+
+  # Category inference mapping
+  category_inference:
+    "Fittings > Couplings": ["coupling", "cplg", "union"]
+    "Fittings > Elbows": ["elbow", "ell", "90", "45"]
+    "Fittings > Tees": ["tee", "t-fitting"]
+    "Valves > Ball Valves": ["ball valve", "bv", "full port"]
+    "Valves > Gate Valves": ["gate valve", "gv"]
+    "Nipples > Black Iron": ["nipple", "nip", "close nipple"]
+    "Water Supply > Faucet Supply": ["faucet supply", "supply line"]
+    "Water Supply > Water Heater": ["water heater", "wh connector"]
+    "Drainage > P-Traps": ["p-trap", "trap"]
+    "Flex Connectors": ["flex", "flexible"]
+    "Gas Connectors": ["gas connector", "csst", "gas line"]
+    "Pipe Hangers > Ring Type": ["pipe hanger", "ring hanger"]
+    "PushLock > Couplings": ["pushlock coupling", "push coupling"]
+    "PushLock > Elbows": ["pushlock elbow", "push elbow"]
+    "TitanPress > Couplings": ["press coupling", "titan press"]
+    "Tubular > Extensions": ["tubular extension", "slip joint"]
+    "Tubular > P-Traps": ["tubular p-trap", "tubular trap"]
+
+  # Size normalization rules (CCO-UPC §6 Dimension Normalization)
+  size_normalization:
+    patterns:
+      - regex: '(\d+)/(\d+)"?'
+        format: '{0}/{1}"'
+      - regex: '(\d+)-(\d+)/(\d+)"?'
+        format: '{0}-{1}/{2}"'
+    compound_injection: true  # Apply unit to all dimensions in sequence
+    filter_false_positives: true  # Reject "1/4" if context is "1/4 TURN"
+
+  # Cross-reference similarity thresholds (CCO-UPC §3)
+  cross_reference:
+    similarity_threshold_5char: 0.79
+    similarity_threshold_6plus: 0.88
+    stock_code_in_rawline: true  # Enforce substring match
+    confidence_penalty_on_miss: 0.15

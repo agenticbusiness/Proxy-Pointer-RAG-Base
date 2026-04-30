@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sovereign Proxy Pointer RAG Search V2 — Semantic + Fuzzy + Graph + Zero-Backend">
+<title>Sovereign Proxy RAG Search V2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lunr@2.3.9/lunr.min.js"></script>
+<style>
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   SOVEREIGN DESIGN SYSTEM — Dark Glassmorphism + Inter
+   ═══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg-deep:#0a0e17;--bg-surface:#111827;--bg-card:#1a2234;
+  --glass:rgba(30,41,70,0.55);--glass-border:rgba(100,130,255,0.12);
+  --accent:#6366f1;--accent-glow:rgba(99,102,241,0.25);
+  --green:#10b981;--amber:#f59e0b;--red:#ef4444;--cyan:#06b6d4;
+  --text-primary:#f1f5f9;--text-secondary:#94a3b8;--text-muted:#64748b;
+  --radius:12px;--radius-sm:8px;
+  --font:'Inter',system-ui,-apple-system,sans-serif;
+}
+html{font-size:15px}
+body{
+  font-family:var(--font);background:var(--bg-deep);color:var(--text-primary);
+  min-height:100vh;overflow-x:hidden;
+  background-image:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(99,102,241,0.12),transparent);
+}
+/* ─── TOP BAR ─── */
+.topbar{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 24px;
+  background:rgba(10,14,23,0.85);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--glass-border);
+}
+.topbar h1{font-size:1.1rem;font-weight:700;letter-spacing:-0.02em}
+.topbar h1 span{color:var(--accent);font-weight:800}
+.topbar .badge{
+  font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:20px;
+  background:var(--accent-glow);color:var(--accent);border:1px solid rgba(99,102,241,0.3);
+}
+/* ─── MAIN LAYOUT ─── */
+.container{max-width:1100px;margin:0 auto;padding:24px 20px 60px}
+/* ─── SEARCH BOX ─── */
+.search-zone{
+  margin-bottom:28px;
+  background:var(--glass);backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border);border-radius:var(--radius);
+  padding:20px 24px;
+}
+.search-row{display:flex;gap:10px;align-items:center}
+.search-input{
+  flex:1;padding:12px 16px;font-size:1rem;font-family:var(--font);
+  background:var(--bg-deep);border:1px solid rgba(100,130,255,0.18);
+  border-radius:var(--radius-sm);color:var(--text-primary);
+  outline:none;transition:border .2s,box-shadow .2s;
+}
+.search-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.search-input::placeholder{color:var(--text-muted)}
+.btn{
+  padding:12px 22px;font-size:.85rem;font-weight:600;font-family:var(--font);
+  border:none;border-radius:var(--radius-sm);cursor:pointer;
+  transition:transform .12s,box-shadow .2s;white-space:nowrap;
+}
+.btn:active{transform:scale(0.97)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 14px var(--accent-glow)}
+.btn-primary:hover{box-shadow:0 6px 20px rgba(99,102,241,0.4)}
+.btn-ghost{background:transparent;color:var(--text-secondary);border:1px solid var(--glass-border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--text-primary)}
+/* ─── FILTERS ─── */
+.filter-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;align-items:center}
+.filter-chip{
+  padding:5px 14px;font-size:.75rem;font-weight:500;
+  border-radius:20px;cursor:pointer;transition:all .15s;
+  background:var(--bg-deep);border:1px solid var(--glass-border);color:var(--text-secondary);
+}
+.filter-chip:hover,.filter-chip.active{
+  background:var(--accent-glow);border-color:var(--accent);color:var(--accent);
+}
+.filter-label{font-size:.72rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+select.filter-select{
+  padding:5px 12px;font-size:.75rem;font-family:var(--font);
+  background:var(--bg-deep);border:1px solid var(--glass-border);
+  border-radius:20px;color:var(--text-secondary);cursor:pointer;outline:none;
+}
+select.filter-select:focus{border-color:var(--accent)}
+/* ─── STATS BAR ─── */
+.stats-bar{
+  display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;
+}
+.stat-card{
+  flex:1;min-width:140px;padding:14px 18px;
+  background:var(--glass);backdrop-filter:blur(8px);
+  border:1px solid var(--glass-border);border-radius:var(--radius-sm);
+}
+.stat-card .val{font-size:1.5rem;font-weight:800;color:var(--accent)}
+.stat-card .label{font-size:.7rem;color:var(--text-muted);font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+/* ─── RESULTS ─── */
+.results-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:12px;
+}
+.results-header h2{font-size:.95rem;font-weight:600;color:var(--text-secondary)}
+.results-header .count{font-size:.8rem;color:var(--text-muted)}
+.result-card{
+  background:var(--bg-card);border:1px solid var(--glass-border);
+  border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:8px;
+  transition:border-color .15s,transform .12s;cursor:default;
+}
+.result-card:hover{border-color:rgba(99,102,241,0.3);transform:translateY(-1px)}
+.result-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.result-code{font-size:.95rem;font-weight:700;color:var(--cyan);font-family:'JetBrains Mono',monospace,var(--font)}
+.result-desc{font-size:.88rem;color:var(--text-primary);margin-top:4px}
+.result-meta{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center}
+.meta-tag{
+  font-size:.68rem;font-weight:500;padding:2px 10px;border-radius:12px;
+}
+.tag-engine{background:rgba(6,182,212,0.12);color:var(--cyan);border:1px solid rgba(6,182,212,0.2)}
+.tag-material{background:rgba(245,158,11,0.12);color:var(--amber);border:1px solid rgba(245,158,11,0.2)}
+.tag-page{background:rgba(16,185,129,0.12);color:var(--green);border:1px solid rgba(16,185,129,0.2)}
+.tag-source{background:rgba(99,102,241,0.12);color:var(--accent);border:1px solid rgba(99,102,241,0.2)}
+.tag-confidence{font-weight:700}
+.conf-high{color:var(--green)}
+.conf-mid{color:var(--amber)}
+.conf-low{color:var(--red)}
+.result-raw{
+  margin-top:8px;font-size:.72rem;color:var(--text-muted);
+  font-family:'JetBrains Mono',monospace;padding:6px 10px;
+  background:rgba(0,0,0,0.3);border-radius:6px;word-break:break-all;
+}
+.fuzzy-banner{
+  padding:8px 14px;margin-bottom:12px;font-size:.78rem;
+  background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);
+  border-radius:var(--radius-sm);color:var(--amber);display:none;
+}
+.fuzzy-banner .original{text-decoration:line-through;opacity:.6}
+.fuzzy-banner .corrected{font-weight:700;color:var(--green)}
+.tag-semantic{background:rgba(168,85,247,0.12);color:#a855f7;border:1px solid rgba(168,85,247,0.2)}
+.tag-semantic{background:rgba(168,85,247,0.12);color:#a855f7;border:1px solid rgba(168,85,247,0.2)}
+/* ─── FILE DROP ZONE ─── */
+.drop-zone{
+  margin-top:20px;padding:24px;border:2px dashed var(--glass-border);
+  border-radius:var(--radius);text-align:center;background:var(--bg-card);
+  transition:all 0.2s ease;cursor:pointer;
+}
+.drop-zone.dragover{border-color:var(--accent);background:var(--glass);}
+.drop-zone .icon{font-size:24px;margin-bottom:8px;display:block;}
+.drop-zone .title{font-size:.9rem;font-weight:600;color:var(--text-primary);margin-bottom:4px;}
+.drop-zone .sub{font-size:.75rem;color:var(--text-muted);}
+/* ─── EMPTY STATE ─── */
+.empty-state{
+  text-align:center;padding:60px 20px;color:var(--text-muted);
+}
+.empty-state .icon{font-size:3rem;margin-bottom:12px;opacity:.5}
+.empty-state p{font-size:.9rem}
+/* ─── STATUS BAR ─── */
+.status-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  padding:8px 24px;font-size:.72rem;
+  background:rgba(10,14,23,0.9);backdrop-filter:blur(12px);
+  border-top:1px solid var(--glass-border);
+  display:flex;justify-content:space-between;color:var(--text-muted);
+}
+.status-bar .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-amber{background:var(--amber)}
+/* ─── LOADING ─── */
+.loading-overlay{
+  position:fixed;inset:0;z-index:999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--bg-deep);
+}
+.loading-spinner{
+  width:40px;height:40px;border:3px solid var(--glass-border);
+  border-top-color:var(--accent);border-radius:50%;
+  animation:spin .8s linear infinite;margin-bottom:16px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:.85rem;color:var(--text-secondary)}
+/* ─── SCROLL ─── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--glass-border);border-radius:3px}
+/* ─── RESPONSIVE ─── */
+@media(max-width:640px){
+  .search-row{flex-direction:column}
+  .stats-bar{flex-direction:column}
+  .topbar{padding:10px 16px}
+  .container{padding:16px 12px 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Compiling search index in WASM memory…</div>
+</div>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <h1>⚡ <span>Sovereign</span> Proxy RAG Search</h1>
+  <span class="badge">V2 · Semantic + Fuzzy + Graph · Zero Backend</span>
+</header>
+
+<!-- MAIN -->
+<main class="container">
+  <!-- SEARCH -->
+  <div class="search-zone" id="searchZone">
+    <div class="search-row">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search parts… e.g. brass elbow, coupling, 3/4 valve" autofocus>
+      <button class="btn btn-primary" id="searchBtn" onclick="doSearch()">Search</button>
+      <button class="btn btn-ghost" onclick="clearSearch()">Clear</button>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">Material:</span>
+      <span class="filter-chip active" data-filter="material" data-value="all" onclick="toggleFilter(this)">All</span>
+      <span class="filter-chip" data-filter="material" data-value="brass" onclick="toggleFilter(this)">Brass</span>
+      <span class="filter-chip" data-filter="material" data-value="copper" onclick="toggleFilter(this)">Copper</span>
+      <span class="filter-chip" data-filter="material" data-value="cast_iron" onclick="toggleFilter(this)">Cast Iron</span>
+      <span class="filter-chip" data-filter="material" data-value="stainless_steel" onclick="toggleFilter(this)">Stainless</span>
+      <span class="filter-chip" data-filter="material" data-value="composite" onclick="toggleFilter(this)">Composite</span>
+
+      <span class="filter-label" style="margin-left:12px">Source:</span>
+      <select class="filter-select" id="sourceFilter" onchange="doSearch()">
+        <option value="all">All Sources</option>
+      </select>
+
+      <span class="filter-label" style="margin-left:12px">Min Confidence:</span>
+      <select class="filter-select" id="confFilter" onchange="doSearch()">
+        <option value="0">Any</option>
+        <option value="0.90">≥ 90%</option>
+        <option value="0.95">≥ 95%</option>
+        <option value="0.98">≥ 98%</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar" id="statsBar">
+    <div class="stat-card"><div class="val" id="statTotal">—</div><div class="label">Total Parts</div></div>
+    <div class="stat-card"><div class="val" id="statSources">—</div><div class="label">Sources</div></div>
+    <div class="stat-card"><div class="val" id="statCategories">—</div><div class="label">Categories</div></div>
+    <div class="stat-card"><div class="val" id="statIndexMs">—</div><div class="label">Index Build (ms)</div></div>
+    <div class="stat-card"><div class="val" id="statSemantic">—</div><div class="label">Semantic Mode</div></div>
+  </div>
+
+  <!-- FUZZY CORRECTION BANNER -->
+  <div class="fuzzy-banner" id="fuzzyBanner"></div>
+
+  <!-- FILE UPLOAD ZONE -->
+  <div class="drop-zone" id="dropZone">
+    <span class="icon">📁</span>
+    <div class="title">Drag & Drop Catalog PDF</div>
+    <div class="sub">Or click to browse. Files sent to _1 Input Files Folder.</div>
+    <input type="file" id="fileInput" accept="application/pdf" style="display:none">
+  </div>
+
+
+
+  <!-- RESULTS -->
+  <div class="results-header">
+    <h2 id="resultsTitle">All Parts</h2>
+    <span class="count" id="resultsCount"></span>
+  </div>
+  <div id="resultsContainer"></div>
+</main>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <span><span class="dot dot-green" id="statusDot"></span><span id="statusText">Initializing…</span></span>
+  <span id="statusRight">V2 · lunr.js + Semantic + Fuzzy · No Backend</span>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   SOVEREIGN PROXY RAG SEARCH ENGINE — Browser-Native (ZWP-2)
+   Governance: CCO-UPC §1 (Dumb Reader), §3 (Hallucination Cross-Ref)
+   Dependencies: lunr.js (CDN), rag_corpus.json (local fetch)
+   Backend: NONE
+   ═══════════════════════════════════════════════════════════════ */
+
+let corpus = [];
+let lunrIndex = null;
+let activeFilters = { material: 'all' };
+
+// ─── BOOT: Fetch corpus → Build lunr index ───
+(async function boot() {
+  const t0 = performance.now();
+  try {
+    const resp = await fetch('data/rag_corpus.json');
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    corpus = await resp.json();
+  } catch (e) {
+    document.getElementById('statusText').textContent = `LOAD ERROR: ${e.message}`;
+    document.getElementById('statusDot').className = 'dot dot-amber';
+    document.getElementById('loadingOverlay').style.display = 'none';
+    return;
+  }
+
+  // Build lunr index
+  const t1 = performance.now();
+  lunrIndex = lunr(function() {
+    this.ref('id');
+    this.field('stock_code', { boost: 10 });
+    this.field('description', { boost: 5 });
+    this.field('raw_line', { boost: 2 });
+    this.field('material');
+    this.field('category');
+    this.field('size');
+    corpus.forEach(doc => this.add(doc));
+  });
+  const indexMs = Math.round(performance.now() - t1);
+
+  // Populate source filter
+  const sources = [...new Set(corpus.map(p => p.source))];
+  const sel = document.getElementById('sourceFilter');
+  sources.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s; opt.textContent = s.replace(/_/g,' ').replace('.pdf','');
+    sel.appendChild(opt);
+  });
+
+  // Stats
+  const categories = [...new Set(corpus.map(p => p.category))];
+  document.getElementById('statTotal').textContent = corpus.length;
+  document.getElementById('statSources').textContent = sources.length;
+  document.getElementById('statCategories').textContent = categories.length;
+  document.getElementById('statIndexMs').textContent = indexMs;
+
+  // Ready
+  document.getElementById('statusText').textContent =
+    `Ready — ${corpus.length} parts indexed in ${indexMs}ms`;
+  document.getElementById('loadingOverlay').style.display = 'none';
+
+  // Show all on boot
+  renderResults(corpus, 'All Parts');
+
+  // Bind enter key
+  document.getElementById('searchInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSearch();
+  });
+
+  console.log(`[ZWP-2] Proxy RAG Search V2 ready. ${corpus.length} parts, index built in ${indexMs}ms.`);
+
+  // Boot MCP Shim V2 (loads graph_data.json + embeddings.json and exposes window.MCP)
+  if (typeof bootMCPShim === 'function') {
+    await bootMCPShim();
+    // Update semantic status
+    const diag = MCP.diagnostics();
+    document.getElementById('statSemantic').textContent = diag.semanticEnabled ? 'ON' : 'OFF';
+    document.getElementById('statSemantic').style.color = diag.semanticEnabled ? 'var(--green)' : 'var(--text-muted)';
+  }
+})();
+
+// ─── SEARCH ───
+async function doSearch() {
+  const term = document.getElementById('searchInput').value.trim();
+  const sourceVal = document.getElementById('sourceFilter').value;
+  const confVal = parseFloat(document.getElementById('confFilter').value);
+
+  // ─── V2 UPGRADE: Use MCP shim for search (includes fuzzy + semantic) ───
+  if (typeof MCP !== 'undefined' && MCP.vector) {
+    const mcpResults = await MCP.vector.search(term || '', 500);
+    results = mcpResults.map(r => r.part);
+    
+    // Show fuzzy correction banner
+    const banner = document.getElementById('fuzzyBanner');
+    if (mcpResults.length > 0 && mcpResults[0].fuzzyApplied) {
+      const f = mcpResults[0].fuzzyApplied;
+      banner.innerHTML = `🔤 Auto-corrected: <span class="original">${esc(f.original)}</span> → <span class="corrected">${esc(f.corrected)}</span>`;
+      banner.style.display = 'block';
+    } else {
+      banner.style.display = 'none';
+    }
+  } else {
+    // Fallback to lunr.js (V1 behavior)
+    if (!term) {
+      results = [...corpus];
+    } else {
+      try {
+        const searchTerms = term.split(/\s+/).map(t => t + '*').join(' ');
+        const hits = lunrIndex.search(searchTerms);
+        const hitIds = new Set(hits.map(h => h.ref));
+        results = corpus.filter(p => hitIds.has(p.id));
+        if (results.length === 0) {
+          const lower = term.toLowerCase();
+          results = corpus.filter(p =>
+            p.stock_code.toLowerCase().includes(lower) ||
+            p.description.toLowerCase().includes(lower) ||
+            p.raw_line.toLowerCase().includes(lower)
+          );
+        }
+      } catch(e) {
+        const lower = term.toLowerCase();
+        results = corpus.filter(p =>
+          p.stock_code.toLowerCase().includes(lower) ||
+          p.description.toLowerCase().includes(lower) ||
+          p.raw_line.toLowerCase().includes(lower)
+        );
+      }
+    }
+  }
+
+  // Apply filters
+  if (activeFilters.material !== 'all') {
+    results = results.filter(p => p.material === activeFilters.material);
+  }
+  if (sourceVal !== 'all') {
+    results = results.filter(p => p.source === sourceVal);
+  }
+  if (confVal > 0) {
+    results = results.filter(p => p.confidence >= confVal);
+  }
+
+  const title = term ? `Results for "${term}"` : 'All Parts';
+  renderResults(results, title);
+}
+
+// ─── RENDER ───
+function renderResults(results, title) {
+  document.getElementById('resultsTitle').textContent = title;
+  document.getElementById('resultsCount').textContent = `${results.length} part${results.length !== 1 ? 's' : ''}`;
+
+  const container = document.getElementById('resultsContainer');
+
+  if (results.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="icon">🔍</div>
+        <p>No parts found. Try a different search term or adjust filters.</p>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = results.map(p => {
+    const confPct = Math.round(p.confidence * 100);
+    const confClass = confPct >= 95 ? 'conf-high' : confPct >= 85 ? 'conf-mid' : 'conf-low';
+    const srcShort = p.source.replace('_catalog_2026.pdf','').replace(/_/g,' ');
+    return `
+    <div class="result-card">
+      <div class="result-top">
+        <div>
+          <div class="result-code">${esc(p.stock_code)}</div>
+          <div class="result-desc">${esc(p.description)}</div>
+        </div>
+        <span class="meta-tag tag-confidence ${confClass}">${confPct}%</span>
+      </div>
+      <div class="result-meta">
+        <span class="meta-tag tag-material">${esc(p.material.replace(/_/g,' '))}</span>
+        <span class="meta-tag tag-engine">${esc(p.engine)}</span>
+        <span class="meta-tag tag-page">Page ${p.page}</span>
+        <span class="meta-tag tag-source">${esc(srcShort)}</span>
+        ${p.size ? `<span class="meta-tag tag-page">${esc(p.size)}</span>` : ''}
+        <span class="meta-tag" style="color:var(--text-muted);font-size:.65rem">${esc(p.category)}</span>
+      </div>
+      <div class="result-raw">${esc(p.raw_line)}</div>
+    </div>`;
+  }).join('');
+}
+
+// ─── FILTER CHIPS ───
+function toggleFilter(el) {
+  const group = el.dataset.filter;
+  const value = el.dataset.value;
+  document.querySelectorAll(`.filter-chip[data-filter="${group}"]`).forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  activeFilters[group] = value;
+  doSearch();
+}
+
+// ─── CLEAR ───
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('sourceFilter').value = 'all';
+  document.getElementById('confFilter').value = '0';
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  document.querySelector('.filter-chip[data-value="all"]').classList.add('active');
+  activeFilters = { material: 'all' };
+  renderResults(corpus, 'All Parts');
+}
+
+// ─── FILE DROP LOGIC ───
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault(); dropZone.classList.remove('dragover');
+  if(e.dataTransfer.files.length) handleUpload(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', (e) => {
+  if(e.target.files.length) handleUpload(e.target.files[0]);
+});
+
+async function handleUpload(file) {
+  if (file.type !== 'application/pdf') {
+    alert('Please upload a PDF file.');
+    return;
+  }
+
+  const overlay = document.getElementById('loadingOverlay');
+  const loadText = document.querySelector('.loading-text');
+  loadText.textContent = `Processing "${file.name}"...`;
+  overlay.style.display = 'flex';
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    const resp = await fetch('http://localhost:5000/upload', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await resp.json();
+    
+    overlay.style.display = 'none';
+    
+    if (data.status === 'SUCCESS') {
+      alert(`✅ Upload Successful!\n\nFile parsed and moved to:\n_2 COMPLETED Upload Files`);
+    } else {
+      alert(`⚠️ Upload Rejected by Gates\n\nFile flagged and moved to:\n_1.5 FAILED UPLOADS TO REVIEW`);
+    }
+  } catch (err) {
+    overlay.style.display = 'none';
+    alert('Error: Make sure local_orchestrator.py is running on port 5000.\nRun: python local_orchestrator.py');
+  }
+}
+
+// ─── ESCAPE HTML ───
+function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+</script>
+<script src="mcp_shim.js"></script>
+</body>
+</html>

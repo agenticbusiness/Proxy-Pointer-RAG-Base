@@ -1,0 +1,54 @@
+{
+  "total": 8,
+  "passed": 8,
+  "tests": [
+    {
+      "test_id": "RA-01",
+      "name": "Exact stock_code search",
+      "status": "PASS",
+      "detail": "Tested 3 codes"
+    },
+    {
+      "test_id": "RA-02",
+      "name": "Multi-word search (brass elbow)",
+      "status": "PASS",
+      "detail": "4 results"
+    },
+    {
+      "test_id": "RA-03",
+      "name": "Material filter accuracy",
+      "status": "PASS",
+      "detail": "Tested 3 materials"
+    },
+    {
+      "test_id": "RA-04",
+      "name": "Source filter accuracy",
+      "status": "PASS",
+      "detail": "Tested 2 sources"
+    },
+    {
+      "test_id": "RA-05",
+      "name": "Confidence threshold filter",
+      "status": "PASS",
+      "detail": "Tested thresholds: [0.9, 0.95, 0.98]"
+    },
+    {
+      "test_id": "RA-06",
+      "name": "Stacked filters (brass + 95% + elbow)",
+      "status": "PASS",
+      "detail": "4 results"
+    },
+    {
+      "test_id": "RA-07",
+      "name": "Empty search returns full corpus",
+      "status": "PASS",
+      "detail": "50 == 50"
+    },
+    {
+      "test_id": "RA-08",
+      "name": "Clear returns full corpus",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

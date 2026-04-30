@@ -1,0 +1,32 @@
+# MCP Shim — WASI Capabilities (Pillar 4 of 5)
+wasi_capabilities:
+  agent: "mcp-shim-integration-Agent"
+  version: "1.0"
+  filesystem:
+    read:
+      - "data/rag_corpus.json"
+      - "data/graph_data.json"
+      - "mcp_shim.js"
+      - "index.html"
+      - "proxy_rag_sdk_types_browser.yaml"
+      - "gates.yaml"
+    write:
+      - "data/graph_data.json"
+      - "tests/mcp_shim_test_results.json"
+    forbidden:
+      - "data/rag_corpus.json"   # READ ONLY
+  network:
+    allowed:
+      - "fileos-hasm.github.io"
+    forbidden:
+      - "*"
+  execution:
+    allowed:
+      - "python generate_graph_data.py"
+      - "python tests/mcp_shim_tests.py"
+      - "python tests/smoke_tests.py"
+      - "python tests/retrieval_tests.py"
+    forbidden:
+      - "npm *"
+      - "node *"
+      - "flask *"

@@ -1,0 +1,54 @@
+{
+  "total": 8,
+  "passed": 8,
+  "tests": [
+    {
+      "test_id": "MCP-P1",
+      "name": "brass elbow: Browser >= Python results",
+      "status": "PASS",
+      "detail": "Python: 4, Browser: 10, Missing: set()"
+    },
+    {
+      "test_id": "MCP-P2",
+      "name": "coupling: Browser >= Python results",
+      "status": "PASS",
+      "detail": "Python: 8, Browser: 8"
+    },
+    {
+      "test_id": "MCP-P3",
+      "name": "Graph nodes == corpus records",
+      "status": "PASS",
+      "detail": "Nodes: 50, Corpus: 50"
+    },
+    {
+      "test_id": "MCP-P4",
+      "name": "All edge weights are 1, 2, or 3",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test_id": "MCP-P5",
+      "name": "No self-referencing edges",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test_id": "MCP-P6",
+      "name": "getConnections(PAGE-5-EVF-001...) returns edges",
+      "status": "PASS",
+      "detail": "15 connections"
+    },
+    {
+      "test_id": "MCP-P7",
+      "name": "Disconnected node returns empty",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test_id": "MCP-P8",
+      "name": "No duplicate edges",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

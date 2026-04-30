@@ -1,0 +1,2306 @@
+{
+  "nodes": [
+    {
+      "id": "PAGE-5-EVF-001",
+      "part_id": "EVF-001",
+      "stock_code": "CI-012-CPLG",
+      "page": 5,
+      "material": "cast_iron",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-5-EVF-002",
+      "part_id": "EVF-002",
+      "stock_code": "?3/4X3/4CPLG",
+      "page": 5,
+      "material": "cast_iron",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-5-EVF-003",
+      "part_id": "EVF-003",
+      "stock_code": "?1X1CPLG",
+      "page": 5,
+      "material": "cast_iron",
+      "size": "1\""
+    },
+    {
+      "id": "PAGE-12-EVF-004",
+      "part_id": "EVF-004",
+      "stock_code": "B-038",
+      "page": 12,
+      "material": "brass",
+      "size": "3/8\""
+    },
+    {
+      "id": "PAGE-12-EVF-005",
+      "part_id": "EVF-005",
+      "stock_code": "B-012",
+      "page": 12,
+      "material": "brass",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-12-EVF-006",
+      "part_id": "EVF-006",
+      "stock_code": "B-034",
+      "page": 12,
+      "material": "brass",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-12-EVF-007",
+      "part_id": "EVF-007",
+      "stock_code": "B-100",
+      "page": 12,
+      "material": "brass",
+      "size": "1\""
+    },
+    {
+      "id": "PAGE-18-EVF-008",
+      "part_id": "EVF-008",
+      "stock_code": "SS-012-T",
+      "page": 18,
+      "material": "stainless_steel",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-18-EVF-009",
+      "part_id": "EVF-009",
+      "stock_code": "SS-034-T",
+      "page": 18,
+      "material": "stainless_steel",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-18-EVF-010",
+      "part_id": "EVF-010",
+      "stock_code": "SS-100-T",
+      "page": 18,
+      "material": "stainless_steel",
+      "size": "1\""
+    },
+    {
+      "id": "PAGE-24-EVF-011",
+      "part_id": "EVF-011",
+      "stock_code": "CP-012-45",
+      "page": 24,
+      "material": "copper",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-24-EVF-012",
+      "part_id": "EVF-012",
+      "stock_code": "CP-034-45",
+      "page": 24,
+      "material": "copper",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-24-EVF-013",
+      "part_id": "EVF-013",
+      "stock_code": "CP-100-45",
+      "page": 24,
+      "material": "copper",
+      "size": "1\""
+    },
+    {
+      "id": "PAGE-31-EVF-014",
+      "part_id": "EVF-014",
+      "stock_code": "GV-012-BV",
+      "page": 31,
+      "material": "brass",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-31-EVF-015",
+      "part_id": "EVF-015",
+      "stock_code": "GV-034-BV",
+      "page": 31,
+      "material": "brass",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-31-EVF-016",
+      "part_id": "EVF-016",
+      "stock_code": "GV-100-BV",
+      "page": 31,
+      "material": "brass",
+      "size": "1\""
+    },
+    {
+      "id": "PAGE-31-EVF-017",
+      "part_id": "EVF-017",
+      "stock_code": "GV-125-BV",
+      "page": 31,
+      "material": "brass",
+      "size": "1-1/4\""
+    },
+    {
+      "id": "PAGE-31-EVF-018",
+      "part_id": "EVF-018",
+      "stock_code": "GV-150-BV",
+      "page": 31,
+      "material": "brass",
+      "size": "1-1/2\""
+    },
+    {
+      "id": "PAGE-32-EVF-019",
+      "part_id": "EVF-019",
+      "stock_code": "GV-200-BV",
+      "page": 32,
+      "material": "brass",
+      "size": "2\""
+    },
+    {
+      "id": "PAGE-40-EVF-020",
+      "part_id": "EVF-020",
+      "stock_code": "PL-012-CXC",
+      "page": 40,
+      "material": "composite",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-40-EVF-021",
+      "part_id": "EVF-021",
+      "stock_code": "PL-034-CXC",
+      "page": 40,
+      "material": "composite",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-40-EVF-022",
+      "part_id": "EVF-022",
+      "stock_code": "PL-100-CXC",
+      "page": 40,
+      "material": "composite",
+      "size": "1\""
+    },
+    {
+      "id": "PAGE-41-EVF-023",
+      "part_id": "EVF-023",
+      "stock_code": "PL-012-90",
+      "page": 41,
+      "material": "composite",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-41-EVF-024",
+      "part_id": "EVF-024",
+      "stock_code": "PL-034-90",
+      "page": 41,
+      "material": "composite",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-50-EVF-025",
+      "part_id": "EVF-025",
+      "stock_code": "BI-012-NIP",
+      "page": 50,
+      "material": "black_iron",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-50-EVF-026",
+      "part_id": "EVF-026",
+      "stock_code": "BI-034-NIP",
+      "page": 50,
+      "material": "black_iron",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-50-EVF-027",
+      "part_id": "EVF-027",
+      "stock_code": "BI-100-NIP",
+      "page": 50,
+      "material": "black_iron",
+      "size": "1\""
+    },
+    {
+      "id": "PAGE-55-EVF-028",
+      "part_id": "EVF-028",
+      "stock_code": "FLX-012-18",
+      "page": 55,
+      "material": "stainless_steel",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-55-EVF-029",
+      "part_id": "EVF-029",
+      "stock_code": "FLX-034-24",
+      "page": 55,
+      "material": "stainless_steel",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-60-EVF-030",
+      "part_id": "EVF-030",
+      "stock_code": "GC-012-36",
+      "page": 60,
+      "material": "csst",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-60-EVF-031",
+      "part_id": "EVF-031",
+      "stock_code": "GC-034-48",
+      "page": 60,
+      "material": "csst",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-62-EVF-032",
+      "part_id": "EVF-032",
+      "stock_code": "WH-012-FIP",
+      "page": 62,
+      "material": "stainless_steel",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-62-EVF-033",
+      "part_id": "EVF-033",
+      "stock_code": "WH-034-FIP",
+      "page": 62,
+      "material": "stainless_steel",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-70-EVF-034",
+      "part_id": "EVF-034",
+      "stock_code": "PHG-012-A",
+      "page": 70,
+      "material": "galvanized_steel",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-70-EVF-035",
+      "part_id": "EVF-035",
+      "stock_code": "PHG-034-A",
+      "page": 70,
+      "material": "galvanized_steel",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-70-EVF-036",
+      "part_id": "EVF-036",
+      "stock_code": "PHG-100-A",
+      "page": 70,
+      "material": "galvanized_steel",
+      "size": "1\""
+    },
+    {
+      "id": "PAGE-75-EVF-037",
+      "part_id": "EVF-037",
+      "stock_code": "DR-150-TRAP",
+      "page": 75,
+      "material": "abs",
+      "size": "1-1/2\""
+    },
+    {
+      "id": "PAGE-75-EVF-038",
+      "part_id": "EVF-038",
+      "stock_code": "DR-200-TRAP",
+      "page": 75,
+      "material": "abs",
+      "size": "2\""
+    },
+    {
+      "id": "PAGE-80-EVF-039",
+      "part_id": "EVF-039",
+      "stock_code": "TP-012-PRESS",
+      "page": 80,
+      "material": "copper",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-80-EVF-040",
+      "part_id": "EVF-040",
+      "stock_code": "TP-034-PRESS",
+      "page": 80,
+      "material": "copper",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-3-JS-001",
+      "part_id": "JS-001",
+      "stock_code": "J40-010",
+      "page": 3,
+      "material": "brass",
+      "size": "1\""
+    },
+    {
+      "id": "PAGE-3-JS-002",
+      "part_id": "JS-002",
+      "stock_code": "J40-012",
+      "page": 3,
+      "material": "brass",
+      "size": "1-1/4\""
+    },
+    {
+      "id": "PAGE-3-JS-003",
+      "part_id": "JS-003",
+      "stock_code": "J40-015",
+      "page": 3,
+      "material": "brass",
+      "size": "1-1/2\""
+    },
+    {
+      "id": "PAGE-3-JS-004",
+      "part_id": "JS-004",
+      "stock_code": "J40-020",
+      "page": 3,
+      "material": "brass",
+      "size": "2\""
+    },
+    {
+      "id": "PAGE-8-JS-005",
+      "part_id": "JS-005",
+      "stock_code": "S10-015",
+      "page": 8,
+      "material": "chrome",
+      "size": "1-1/2\""
+    },
+    {
+      "id": "PAGE-8-JS-006",
+      "part_id": "JS-006",
+      "stock_code": "S10-020",
+      "page": 8,
+      "material": "chrome",
+      "size": "1-1/2\""
+    },
+    {
+      "id": "PAGE-15-JS-007",
+      "part_id": "JS-007",
+      "stock_code": "C72-034",
+      "page": 15,
+      "material": "cpvc",
+      "size": "3/4\""
+    },
+    {
+      "id": "PAGE-15-JS-008",
+      "part_id": "JS-008",
+      "stock_code": "C72-100",
+      "page": 15,
+      "material": "cpvc",
+      "size": "1\""
+    },
+    {
+      "id": "PAGE-22-JS-009",
+      "part_id": "JS-009",
+      "stock_code": "B45-012",
+      "page": 22,
+      "material": "stainless_steel",
+      "size": "1/2\""
+    },
+    {
+      "id": "PAGE-22-JS-010",
+      "part_id": "JS-010",
+      "stock_code": "B45-038",
+      "page": 22,
+      "material": "stainless_steel",
+      "size": "3/8\""
+    }
+  ],
+  "edges": [
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-5-EVF-002",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-5-EVF-003",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-12-EVF-005",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-18-EVF-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-24-EVF-011",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-31-EVF-014",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-40-EVF-020",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-41-EVF-023",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-50-EVF-025",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-55-EVF-028",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-60-EVF-030",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-62-EVF-032",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-001",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-5-EVF-003",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-12-EVF-006",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-18-EVF-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-24-EVF-012",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-31-EVF-015",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-40-EVF-021",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-41-EVF-024",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-50-EVF-026",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-55-EVF-029",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-60-EVF-031",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-62-EVF-033",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-002",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-003",
+      "target": "PAGE-12-EVF-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-003",
+      "target": "PAGE-18-EVF-010",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-003",
+      "target": "PAGE-24-EVF-013",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-003",
+      "target": "PAGE-31-EVF-016",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-003",
+      "target": "PAGE-40-EVF-022",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-003",
+      "target": "PAGE-50-EVF-027",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-003",
+      "target": "PAGE-70-EVF-036",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-003",
+      "target": "PAGE-3-JS-001",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-5-EVF-003",
+      "target": "PAGE-15-JS-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-12-EVF-005",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-12-EVF-006",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-12-EVF-007",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-31-EVF-014",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-31-EVF-015",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-31-EVF-016",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-31-EVF-017",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-31-EVF-018",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-32-EVF-019",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-3-JS-001",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-3-JS-002",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-3-JS-003",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-3-JS-004",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-004",
+      "target": "PAGE-22-JS-010",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-12-EVF-006",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-12-EVF-007",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-18-EVF-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-24-EVF-011",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-31-EVF-014",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-31-EVF-015",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-31-EVF-016",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-31-EVF-017",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-31-EVF-018",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-32-EVF-019",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-40-EVF-020",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-41-EVF-023",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-50-EVF-025",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-55-EVF-028",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-60-EVF-030",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-62-EVF-032",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-3-JS-001",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-3-JS-002",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-3-JS-003",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-3-JS-004",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-005",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-12-EVF-007",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-18-EVF-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-24-EVF-012",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-31-EVF-014",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-31-EVF-015",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-31-EVF-016",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-31-EVF-017",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-31-EVF-018",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-32-EVF-019",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-40-EVF-021",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-41-EVF-024",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-50-EVF-026",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-55-EVF-029",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-60-EVF-031",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-62-EVF-033",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-3-JS-001",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-3-JS-002",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-3-JS-003",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-3-JS-004",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-006",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-18-EVF-010",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-24-EVF-013",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-31-EVF-014",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-31-EVF-015",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-31-EVF-016",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-31-EVF-017",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-31-EVF-018",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-32-EVF-019",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-40-EVF-022",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-50-EVF-027",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-70-EVF-036",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-3-JS-001",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-3-JS-002",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-3-JS-003",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-3-JS-004",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-12-EVF-007",
+      "target": "PAGE-15-JS-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-18-EVF-009",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-18-EVF-010",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-24-EVF-011",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-31-EVF-014",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-40-EVF-020",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-41-EVF-023",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-50-EVF-025",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-55-EVF-028",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-55-EVF-029",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-60-EVF-030",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-62-EVF-032",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-62-EVF-033",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-008",
+      "target": "PAGE-22-JS-010",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-18-EVF-010",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-24-EVF-012",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-31-EVF-015",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-40-EVF-021",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-41-EVF-024",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-50-EVF-026",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-55-EVF-028",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-55-EVF-029",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-60-EVF-031",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-62-EVF-032",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-62-EVF-033",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-22-JS-009",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-009",
+      "target": "PAGE-22-JS-010",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-24-EVF-013",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-31-EVF-016",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-40-EVF-022",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-50-EVF-027",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-55-EVF-028",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-55-EVF-029",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-62-EVF-032",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-62-EVF-033",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-70-EVF-036",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-3-JS-001",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-15-JS-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-22-JS-009",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-18-EVF-010",
+      "target": "PAGE-22-JS-010",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-24-EVF-012",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-24-EVF-013",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-31-EVF-014",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-40-EVF-020",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-41-EVF-023",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-50-EVF-025",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-55-EVF-028",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-60-EVF-030",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-62-EVF-032",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-80-EVF-040",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-24-EVF-011",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-24-EVF-013",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-31-EVF-015",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-40-EVF-021",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-41-EVF-024",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-50-EVF-026",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-55-EVF-029",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-60-EVF-031",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-62-EVF-033",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-80-EVF-039",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-012",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-013",
+      "target": "PAGE-31-EVF-016",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-013",
+      "target": "PAGE-40-EVF-022",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-013",
+      "target": "PAGE-50-EVF-027",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-013",
+      "target": "PAGE-70-EVF-036",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-013",
+      "target": "PAGE-80-EVF-039",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-24-EVF-013",
+      "target": "PAGE-80-EVF-040",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-24-EVF-013",
+      "target": "PAGE-3-JS-001",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-24-EVF-013",
+      "target": "PAGE-15-JS-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-31-EVF-015",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-31-EVF-016",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-31-EVF-017",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-31-EVF-018",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-32-EVF-019",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-40-EVF-020",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-41-EVF-023",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-50-EVF-025",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-55-EVF-028",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-60-EVF-030",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-62-EVF-032",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-3-JS-001",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-3-JS-002",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-3-JS-003",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-3-JS-004",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-014",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-31-EVF-016",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-31-EVF-017",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-31-EVF-018",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-32-EVF-019",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-40-EVF-021",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-41-EVF-024",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-50-EVF-026",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-55-EVF-029",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-60-EVF-031",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-62-EVF-033",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-3-JS-001",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-3-JS-002",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-3-JS-003",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-3-JS-004",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-015",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-31-EVF-017",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-31-EVF-018",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-32-EVF-019",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-40-EVF-022",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-50-EVF-027",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-70-EVF-036",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-3-JS-001",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-3-JS-002",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-3-JS-003",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-3-JS-004",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-016",
+      "target": "PAGE-15-JS-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-017",
+      "target": "PAGE-31-EVF-018",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-31-EVF-017",
+      "target": "PAGE-32-EVF-019",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-017",
+      "target": "PAGE-3-JS-001",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-017",
+      "target": "PAGE-3-JS-002",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-017",
+      "target": "PAGE-3-JS-003",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-017",
+      "target": "PAGE-3-JS-004",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-018",
+      "target": "PAGE-32-EVF-019",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-018",
+      "target": "PAGE-75-EVF-037",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-018",
+      "target": "PAGE-3-JS-001",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-018",
+      "target": "PAGE-3-JS-002",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-018",
+      "target": "PAGE-3-JS-003",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-018",
+      "target": "PAGE-3-JS-004",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-31-EVF-018",
+      "target": "PAGE-8-JS-005",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-31-EVF-018",
+      "target": "PAGE-8-JS-006",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-32-EVF-019",
+      "target": "PAGE-75-EVF-038",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-32-EVF-019",
+      "target": "PAGE-3-JS-001",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-32-EVF-019",
+      "target": "PAGE-3-JS-002",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-32-EVF-019",
+      "target": "PAGE-3-JS-003",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-32-EVF-019",
+      "target": "PAGE-3-JS-004",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-40-EVF-021",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-40-EVF-022",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-41-EVF-023",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-41-EVF-024",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-50-EVF-025",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-55-EVF-028",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-60-EVF-030",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-62-EVF-032",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-020",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-021",
+      "target": "PAGE-40-EVF-022",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-40-EVF-021",
+      "target": "PAGE-41-EVF-023",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-40-EVF-021",
+      "target": "PAGE-41-EVF-024",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-021",
+      "target": "PAGE-50-EVF-026",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-021",
+      "target": "PAGE-55-EVF-029",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-021",
+      "target": "PAGE-60-EVF-031",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-021",
+      "target": "PAGE-62-EVF-033",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-021",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-021",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-021",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-022",
+      "target": "PAGE-41-EVF-023",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-40-EVF-022",
+      "target": "PAGE-41-EVF-024",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-40-EVF-022",
+      "target": "PAGE-50-EVF-027",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-022",
+      "target": "PAGE-70-EVF-036",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-022",
+      "target": "PAGE-3-JS-001",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-40-EVF-022",
+      "target": "PAGE-15-JS-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-023",
+      "target": "PAGE-41-EVF-024",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-41-EVF-023",
+      "target": "PAGE-50-EVF-025",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-023",
+      "target": "PAGE-55-EVF-028",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-023",
+      "target": "PAGE-60-EVF-030",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-023",
+      "target": "PAGE-62-EVF-032",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-023",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-023",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-023",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-024",
+      "target": "PAGE-50-EVF-026",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-024",
+      "target": "PAGE-55-EVF-029",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-024",
+      "target": "PAGE-60-EVF-031",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-024",
+      "target": "PAGE-62-EVF-033",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-024",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-024",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-41-EVF-024",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-025",
+      "target": "PAGE-50-EVF-026",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-50-EVF-025",
+      "target": "PAGE-50-EVF-027",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-50-EVF-025",
+      "target": "PAGE-55-EVF-028",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-025",
+      "target": "PAGE-60-EVF-030",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-025",
+      "target": "PAGE-62-EVF-032",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-025",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-025",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-025",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-026",
+      "target": "PAGE-50-EVF-027",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-50-EVF-026",
+      "target": "PAGE-55-EVF-029",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-026",
+      "target": "PAGE-60-EVF-031",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-026",
+      "target": "PAGE-62-EVF-033",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-026",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-026",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-026",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-027",
+      "target": "PAGE-70-EVF-036",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-027",
+      "target": "PAGE-3-JS-001",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-50-EVF-027",
+      "target": "PAGE-15-JS-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-028",
+      "target": "PAGE-55-EVF-029",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-55-EVF-028",
+      "target": "PAGE-60-EVF-030",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-028",
+      "target": "PAGE-62-EVF-032",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-028",
+      "target": "PAGE-62-EVF-033",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-55-EVF-028",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-028",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-028",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-028",
+      "target": "PAGE-22-JS-010",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-55-EVF-029",
+      "target": "PAGE-60-EVF-031",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-029",
+      "target": "PAGE-62-EVF-032",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-55-EVF-029",
+      "target": "PAGE-62-EVF-033",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-029",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-029",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-029",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-55-EVF-029",
+      "target": "PAGE-22-JS-009",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-55-EVF-029",
+      "target": "PAGE-22-JS-010",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-60-EVF-030",
+      "target": "PAGE-60-EVF-031",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-60-EVF-030",
+      "target": "PAGE-62-EVF-032",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-60-EVF-030",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-60-EVF-030",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-60-EVF-030",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-60-EVF-031",
+      "target": "PAGE-62-EVF-033",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-60-EVF-031",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-60-EVF-031",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-60-EVF-031",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-62-EVF-032",
+      "target": "PAGE-62-EVF-033",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-62-EVF-032",
+      "target": "PAGE-70-EVF-034",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-62-EVF-032",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-62-EVF-032",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-62-EVF-032",
+      "target": "PAGE-22-JS-010",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-62-EVF-033",
+      "target": "PAGE-70-EVF-035",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-62-EVF-033",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-62-EVF-033",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-62-EVF-033",
+      "target": "PAGE-22-JS-009",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-62-EVF-033",
+      "target": "PAGE-22-JS-010",
+      "weight": 3
+    },
+    {
+      "source": "PAGE-70-EVF-034",
+      "target": "PAGE-70-EVF-035",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-70-EVF-034",
+      "target": "PAGE-70-EVF-036",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-70-EVF-034",
+      "target": "PAGE-80-EVF-039",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-70-EVF-034",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-70-EVF-035",
+      "target": "PAGE-70-EVF-036",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-70-EVF-035",
+      "target": "PAGE-80-EVF-040",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-70-EVF-035",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-70-EVF-036",
+      "target": "PAGE-3-JS-001",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-70-EVF-036",
+      "target": "PAGE-15-JS-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-75-EVF-037",
+      "target": "PAGE-75-EVF-038",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-75-EVF-037",
+      "target": "PAGE-3-JS-003",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-75-EVF-037",
+      "target": "PAGE-8-JS-005",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-75-EVF-037",
+      "target": "PAGE-8-JS-006",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-75-EVF-038",
+      "target": "PAGE-3-JS-004",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-80-EVF-039",
+      "target": "PAGE-80-EVF-040",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-80-EVF-039",
+      "target": "PAGE-22-JS-009",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-80-EVF-040",
+      "target": "PAGE-15-JS-007",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-3-JS-001",
+      "target": "PAGE-3-JS-002",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-3-JS-001",
+      "target": "PAGE-3-JS-003",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-3-JS-001",
+      "target": "PAGE-3-JS-004",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-3-JS-001",
+      "target": "PAGE-15-JS-008",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-3-JS-002",
+      "target": "PAGE-3-JS-003",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-3-JS-002",
+      "target": "PAGE-3-JS-004",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-3-JS-003",
+      "target": "PAGE-3-JS-004",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-3-JS-003",
+      "target": "PAGE-8-JS-005",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-3-JS-003",
+      "target": "PAGE-8-JS-006",
+      "weight": 2
+    },
+    {
+      "source": "PAGE-8-JS-005",
+      "target": "PAGE-8-JS-006",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-15-JS-007",
+      "target": "PAGE-15-JS-008",
+      "weight": 1
+    },
+    {
+      "source": "PAGE-22-JS-009",
+      "target": "PAGE-22-JS-010",
+      "weight": 1
+    }
+  ]
+}
