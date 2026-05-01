@@ -3,9 +3,10 @@
 > **Type:** Working SOP (Keyword Density)
 
 ## 1. What Material Can Be Uploaded?
-- **Format:** `.pdf`
-- **Content:** Manufacturer Catalogs, Spec Sheets, Cut Sheets.
-- **Data Types:** Tabular data, Part Numbers (Stock Codes), Descriptions, Dimensions.
+- **Format:** `.pdf`, `.docx`, `.md`, `.txt`, `.json`
+- **Content:** Any domain — Manufacturer Catalogs, Knowledge Bases, Legal Dossiers, Financial Reports.
+- **Data Types:** Tabular data, Prose, Structured Records, Technical Specifications.
+- **Domain Detection:** Automatic via `domain_profiler.py` (Zod Schema Discovery).
 
 ## 2. Pre-Upload Clean-Up Needed?
 - **NONE.** 
@@ -26,16 +27,19 @@
 - **Dashboard:** Top "Stats Bar" displays total indexed parts and loaded sources.
 
 ## 6. Actual Upload Process (What it does)
-1. **Extract:** Read PDF (Text/Vision) → LLM Structuring → `full_extract.json`
-2. **Sanitize:** `export_corpus.py` applies 4 Pre-Flight Gates (Confidence floor, Code length).
-3. **Compile:** Transforms valid records into flat `rag_corpus.json`.
-4. **Graph:** `generate_graph_data.py` builds relationship edges (Page/Size/Material) into `graph_data.json`.
-5. **Serve:** Browser loads JSONs directly into memory.
+1. **Profile:** `domain_profiler.py` scans source files → Outputs `domain_schema.yaml` (domain type, keyword taxonomy, embedding field selection).
+2. **Extract:** Read PDF/DOCX/MD (Text/Vision) → LLM Structuring → `full_extract.json`
+3. **Sanitize:** `export_corpus.py` applies Pre-Flight Gates using domain-adaptive inference (reads `domain_schema.yaml`).
+4. **Compile:** Transforms valid records into flat `rag_corpus.json`.
+5. **Embed:** `generate_sample_embeddings.py` reads `domain_schema.yaml` to select which fields to hash (NOT hardcoded).
+6. **Graph:** `generate_graph_data.py` builds relationship edges into `graph_data.json`.
+7. **Serve:** Browser loads JSONs directly into memory.
 
 ## 7. Embedding System Used
-- **NONE.** (Zero-Backend Mandate).
-- **Engine:** `lunr.js` (In-Browser Full-Text Search) + JSON Graph Traversal.
-- **Why:** Eliminates API latency, compute costs, and backend maintenance.
+- **Local:** `pseudo-hash-384` via `generate_sample_embeddings.py` (domain-adaptive field selection from `domain_schema.yaml`).
+- **Production:** `all-MiniLM-L6-v2` via `generate_embeddings.py` (Oracle ARM node, same domain-adaptive field selection).
+- **Browser:** Cosine similarity in `mcp_shim.js` — ZERO ML model needed client-side.
+- **Field Selection:** Dynamic. Determined by `domain_schema.yaml`, NOT hardcoded. Defaults maintained for backward compatibility.
 
 ## 8. Data Storage Location
 - **LOCAL.** 

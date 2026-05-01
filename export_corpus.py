@@ -159,6 +159,7 @@ def export(source_path, source_name):
         eng = part.get("engine", "text_layer")
         page = int(part.get("_page", part.get("page", 0)))
         raw = part.get("raw_line", part.get("raw_text", f"{code}  {desc}"))
+        visual_anchor = part.get("visual_anchor_uri", part.get("crop_image_path", ""))
 
         # Apply OCR penalty
         if eng == "ocr" and conf > 0.3:
@@ -188,6 +189,7 @@ def export(source_path, source_name):
             "category": infer_category(desc),
             "source": source_name,
             "raw_line": raw.strip(),
+            "visual_anchor_uri": visual_anchor,
         }
 
         # Cross-reference check: stock_code should be in raw_line

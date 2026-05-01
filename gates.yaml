@@ -23,6 +23,22 @@ inherited_from: "_99-1 Proxy Pointer RAG-WASM/gates.yaml"
 
 mcp_shim_gates:
 
+  gate_ci_neg1_domain_profiling:
+    name: "Domain Schema Discovery Gate"
+    fires_on: "pre-corpus-export"
+    sequence: -1  # Fires BEFORE CI-0 (corpus ingestion)
+    checks:
+      - "domain_profiler.py executed against source files or existing corpus"
+      - "domain_schema.yaml exists and is valid YAML/JSON"
+      - "domain_type is one of: parts_catalog, knowledge_base, legal, financial"
+      - "embedding_config.fields_to_hash is a non-empty array"
+      - "taxonomy.auto_detected_categories has >= 5 entries"
+    on_fail: "Re-run: python domain_profiler.py --input-dir <sources> OR --corpus data/rag_corpus.json"
+    note: >
+      This gate ensures every fork gets domain-adaptive embeddings.
+      If domain_schema.yaml is absent, downstream scripts fall back to
+      hardcoded defaults (backward-compatible), but the gate will WARN.
+
   gate_mcp0_graph_data_integrity:
     name: "Graph Data Integrity Gate"
     fires_on: "post-graph-generation"

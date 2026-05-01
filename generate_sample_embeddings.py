@@ -31,9 +31,33 @@ output = {
     "vectors": []
 }
 
+# ─── Domain-Adaptive Field Selection ───
+# Reads domain_schema.yaml (from domain_profiler.py) to determine which
+# corpus fields carry the most signal for THIS domain's embeddings.
+# Falls back to hardcoded defaults if no schema exists (backward-compatible).
+SCHEMA_PATH = os.path.join(SCRIPT_DIR, "domain_schema.yaml")
+DEFAULT_FIELDS = ["stock_code", "description", "raw_line", "material", "category"]
+
+if os.path.exists(SCHEMA_PATH):
+    try:
+        import yaml
+        with open(SCHEMA_PATH, "r", encoding="utf-8") as sf:
+            schema = yaml.safe_load(sf)
+        EMBED_FIELDS = schema["domain_schema"]["embedding_config"]["fields_to_hash"]
+        domain_type = schema["domain_schema"]["domain_type"]
+        print(f"[EMBED] Domain-adaptive mode: {domain_type}")
+        print(f"[EMBED] Hashing fields: {EMBED_FIELDS}")
+    except Exception as e:
+        print(f"[EMBED] Schema read failed ({e}) — using defaults")
+        EMBED_FIELDS = DEFAULT_FIELDS
+else:
+    EMBED_FIELDS = DEFAULT_FIELDS
+    print(f"[EMBED] No domain_schema.yaml — using default fields: {EMBED_FIELDS}")
+
 for p in corpus:
-    text = f"{p['stock_code']} {p['description']} {p.get('raw_line','')} {p.get('material','')} {p.get('category','')}"
+    text = " ".join(str(p.get(f, "")) for f in EMBED_FIELDS)
     output["vectors"].append({"id": p["id"], "v": pseudo_embed(text)})
+
 
 with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
     json.dump(output, f, ensure_ascii=False)

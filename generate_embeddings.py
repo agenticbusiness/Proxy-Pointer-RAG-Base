@@ -32,11 +32,32 @@ except ImportError:
     print("[ERROR] pip install sentence-transformers")
     sys.exit(1)
 
+# ─── Domain-Adaptive Field Selection ───
+SCHEMA_PATH = os.path.join(SCRIPT_DIR, "domain_schema.yaml")
+DEFAULT_FIELDS = ["stock_code", "description", "raw_line", "material", "category", "size"]
+
+if os.path.exists(SCHEMA_PATH):
+    try:
+        import yaml
+        with open(SCHEMA_PATH, "r", encoding="utf-8") as sf:
+            schema = yaml.safe_load(sf)
+        EMBED_FIELDS = schema["domain_schema"]["embedding_config"]["fields_to_hash"]
+        domain_type = schema["domain_schema"]["domain_type"]
+        print(f"[Oracle] Domain-adaptive mode: {domain_type}")
+        print(f"[Oracle] Hashing fields: {EMBED_FIELDS}")
+    except Exception as e:
+        print(f"[Oracle] Schema read failed ({e}) — using defaults")
+        EMBED_FIELDS = DEFAULT_FIELDS
+else:
+    EMBED_FIELDS = DEFAULT_FIELDS
+    print(f"[Oracle] No domain_schema.yaml — using default fields: {EMBED_FIELDS}")
+
 # ─── Build searchable text per record ───
 texts = []
 for p in corpus:
-    searchable = f"{p['stock_code']} {p['description']} {p.get('raw_line', '')} {p.get('material', '')} {p.get('category', '')} {p.get('size', '')}"
+    searchable = " ".join(str(p.get(f, "")) for f in EMBED_FIELDS)
     texts.append(searchable)
+
 
 # ─── Encode ALL records (batch, fast on 24GB ARM) ───
 print(f"[Oracle] Encoding {len(texts)} records with all-MiniLM-L6-v2 (384-dim)...")
