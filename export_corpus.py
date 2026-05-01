@@ -30,10 +30,45 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_CORPUS = os.path.join(SCRIPT_DIR, "data", "rag_corpus.json")
 OUTPUT_REJECTED = os.path.join(SCRIPT_DIR, "data", "rejected_log.json")
 
+# ─── Domain-Adaptive Inference ───
+# Reads domain_schema.yaml (from domain_profiler.py) to determine material/category
+# keywords. Falls back to hardcoded plumbing defaults if no schema exists.
+SCHEMA_PATH = os.path.join(SCRIPT_DIR, "domain_schema.yaml")
+DOMAIN_TYPE = "parts_catalog"  # default
+DOMAIN_MATERIAL_KEYWORDS = None
+DOMAIN_CATEGORY_KEYWORDS = None
+DOMAIN_ID_PREFIX = "PXR"
+
+if os.path.exists(SCHEMA_PATH):
+    try:
+        import yaml
+        with open(SCHEMA_PATH, "r", encoding="utf-8") as sf:
+            _schema = yaml.safe_load(sf)
+        _ds = _schema["domain_schema"]
+        DOMAIN_TYPE = _ds.get("domain_type", "parts_catalog")
+        DOMAIN_MATERIAL_KEYWORDS = _ds.get("inference_config", {}).get("material_keywords", None)
+        DOMAIN_CATEGORY_KEYWORDS = _ds.get("inference_config", {}).get("category_keywords", None)
+        DOMAIN_ID_PREFIX = _ds.get("field_profile", {}).get("id_prefix", "PXR")
+        print(f"[EXPORT] Domain-adaptive mode: {DOMAIN_TYPE}")
+        print(f"[EXPORT] ID prefix: {DOMAIN_ID_PREFIX}")
+        if DOMAIN_MATERIAL_KEYWORDS:
+            print(f"[EXPORT] Material keywords: {DOMAIN_MATERIAL_KEYWORDS[:8]}...")
+    except Exception as e:
+        print(f"[EXPORT] Schema read failed ({e}) — using plumbing defaults")
+
 
 def infer_material(description, raw_line=""):
-    """Infer material from description text using inference.yaml mappings."""
+    """Infer material from description text using domain-adaptive keywords."""
     text = f"{description} {raw_line}".lower()
+
+    # If domain_schema.yaml provided material keywords, use those
+    if DOMAIN_MATERIAL_KEYWORDS and DOMAIN_TYPE != "parts_catalog":
+        for kw in DOMAIN_MATERIAL_KEYWORDS:
+            if kw.lower() in text:
+                return kw.lower().replace(" ", "_")
+        return ""
+
+    # Fallback: original plumbing inference (backward-compatible)
     mappings = {
         "brass": ["brass", "brz"],
         "copper": ["copper", "cu "],
@@ -55,8 +90,17 @@ def infer_material(description, raw_line=""):
 
 
 def infer_category(description):
-    """Infer category from description using inference.yaml mappings."""
+    """Infer category from description using domain-adaptive keywords."""
     text = description.lower()
+
+    # If domain_schema.yaml provided category keywords, use those
+    if DOMAIN_CATEGORY_KEYWORDS and DOMAIN_TYPE != "parts_catalog":
+        for kw in DOMAIN_CATEGORY_KEYWORDS:
+            if kw.lower() in text:
+                return kw.strip().title()
+        return "General"
+
+    # Fallback: original plumbing inference (backward-compatible)
     if "coupling" in text:
         if "press" in text: return "TitanPress > Couplings"
         if "pushlock" in text or "push" in text: return "PushLock > Couplings"
@@ -143,13 +187,14 @@ def export(source_path, source_name):
     rejected = []
     seq = 0
 
-    # Determine ID prefix from source name
-    if "everflow" in source_name.lower() or "evf" in source_name.lower():
-        prefix = "EVF"
-    elif "jones" in source_name.lower() or "js" in source_name.lower():
-        prefix = "JS"
-    else:
-        prefix = "PXR"
+    # Determine ID prefix from domain_schema.yaml or source name
+    prefix = DOMAIN_ID_PREFIX  # From schema (default: PXR)
+    if DOMAIN_TYPE == "parts_catalog":
+        # Parts catalogs still use source-name-based prefixes for backward compat
+        if "everflow" in source_name.lower() or "evf" in source_name.lower():
+            prefix = "EVF"
+        elif "jones" in source_name.lower() or "js" in source_name.lower():
+            prefix = "JS"
 
     for part in raw_parts:
         seq += 1

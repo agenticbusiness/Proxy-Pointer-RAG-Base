@@ -154,13 +154,16 @@ const BrowserVectorAPI = {
     const lower = searchQuery.toLowerCase();
     const terms = lower.split(/\s+/);
 
-    // Step 2: Keyword scoring (same as V1)
+    // Step 2: Keyword scoring — domain-adaptive field search
+    // Builds search text from ALL populated fields on the record,
+    // ensuring parity with domain_schema.yaml embedding field selection.
     const scored = corpus.map((part) => {
-      const text = `${part.stock_code} ${part.description} ${part.raw_line} ${part.material} ${part.category}`.toLowerCase();
+      const allFields = ['stock_code', 'description', 'raw_line', 'material', 'category', 'size', 'source'];
+      const text = allFields.map(f => (part[f] || '')).join(' ').toLowerCase();
       let keywordScore = 0;
       terms.forEach(t => {
-        if (part.stock_code.toLowerCase().includes(t)) keywordScore += 3;
-        if (part.description.toLowerCase().includes(t)) keywordScore += 2;
+        if ((part.stock_code || '').toLowerCase().includes(t)) keywordScore += 3;
+        if ((part.description || '').toLowerCase().includes(t)) keywordScore += 2;
         if (text.includes(t)) keywordScore += 1;
       });
       keywordScore = Math.min(keywordScore / (terms.length * 6), 1.0);
