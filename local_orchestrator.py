@@ -156,6 +156,30 @@ def execute_autonomous_pipeline(filename):
     # Save report
     report_path = os.path.join(BASE_DIR, "data", "pipeline_report.json")
     os.makedirs(os.path.dirname(report_path), exist_ok=True)
+
+    # ─── AUTO-REGISTRATION PAYLOAD ───
+    # If the pipeline passed, include a registration payload that governance
+    # sync agents can consume to auto-append to List_of_Architectural_Pipelines.md
+    if all_passed:
+        domain_type = "unknown"
+        schema_path = os.path.join(BASE_DIR, "domain_schema.yaml")
+        if os.path.exists(schema_path):
+            try:
+                import yaml
+                with open(schema_path, "r") as sf:
+                    ds = yaml.safe_load(sf)
+                domain_type = ds.get("domain_schema", {}).get("domain_type", "unknown")
+            except Exception:
+                pass
+        report["pipeline_registration"] = {
+            "document": f"PXR-{domain_type.replace('_', ' ').title()} ({filename})",
+            "workspace_location": BASE_DIR,
+            "domain": domain_type,
+            "archetype": "A (Data Extraction)",
+            "status": "✅ Production",
+            "auto_registered": True,
+        }
+
     with open(report_path, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2)
 

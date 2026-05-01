@@ -282,6 +282,9 @@ def profile(input_dir=None, corpus_path=None):
             json.dump(schema, f, indent=2, ensure_ascii=False)
         print("  [WARN] PyYAML not installed — wrote JSON format to .yaml file")
 
+    # ─── AUTO-ENRICH: Push domain terms to global List_of_Terms_Phrases.md ───
+    terms_enriched = enrich_global_terms(domain_type, taxonomy, field_profile)
+
     # Report
     print(f"\n{'=' * 60}")
     print(f"  DOMAIN SCHEMA DISCOVERY COMPLETE")
@@ -294,9 +297,73 @@ def profile(input_dir=None, corpus_path=None):
     print(f"  Embedding fields: {field_profile['embedding_fields']}")
     print(f"  ID prefix:        {field_profile['id_prefix']}")
     print(f"  Schema saved:     {SCHEMA_OUTPUT}")
+    if terms_enriched:
+        print(f"  Terms enriched:   {terms_enriched} new terms → List_of_Terms_Phrases.md")
     print(f"{'=' * 60}")
 
     return schema
+
+
+def enrich_global_terms(domain_type, taxonomy, field_profile):
+    """
+    Auto-append domain-specific terms to the global List_of_Terms_Phrases.md.
+    This makes every PXR fork teach the entire workspace about its domain vocabulary.
+    
+    Governance: CCO-UPC §1 (Dumb Reader) — append-only, never modifies existing entries.
+    """
+    # Locate the global terms file — try multiple known paths
+    terms_paths = [
+        Path(r"C:\_0 SH-WF-Global gemini.md\_5 Connecting Lists\List_of_Terms_Phrases.md"),
+        SCRIPT_DIR.parent / "_5 Connecting Lists" / "List_of_Terms_Phrases.md",
+    ]
+    
+    terms_file = None
+    for tp in terms_paths:
+        if tp.exists():
+            terms_file = tp
+            break
+    
+    if not terms_file:
+        print("  [INFO] Global List_of_Terms_Phrases.md not found — skipping auto-enrichment")
+        return 0
+    
+    # Read existing terms to avoid duplicates
+    existing_content = terms_file.read_text(encoding="utf-8", errors="ignore").lower()
+    
+    # Extract top domain terms that aren't already in the file
+    new_terms = []
+    categories = taxonomy.get("auto_detected_categories", [])[:20]
+    for term in categories:
+        # Skip generic/short terms and terms already present
+        if len(term) < 4:
+            continue
+        if f"**{term}**" in existing_content or f"| {term} |" in existing_content:
+            continue
+        new_terms.append(term)
+    
+    if not new_terms:
+        return 0
+    
+    # Build the append block — Section 2 style (Industry Standard Terms)
+    timestamp = __import__("datetime").datetime.now().strftime("%Y-%m-%d %H:%M")
+    domain_label = domain_type.replace("_", " ").title()
+    id_prefix = field_profile.get("id_prefix", "PXR")
+    
+    append_block = f"\n\n<!-- _AUTO_ENRICHMENT {timestamp} from domain_profiler.py -->\n"
+    append_block += f"## Section 2.{id_prefix}: Auto-Detected {domain_label} Terms\n\n"
+    append_block += "| Code | Full Name | Industry Standard | Description |\n"
+    append_block += "|------|-----------|------------------|-------------|\n"
+    
+    for term in new_terms[:15]:  # Cap at 15 to prevent bloat
+        zod_tags = f"`{term}, {domain_type}, auto_detected`"
+        append_block += f"| **{term.upper()}** | {term.title()} (Auto-Detected) | Domain: {domain_label} | Zod: {zod_tags} |\n"
+    
+    # Append-only write (governance compliant)
+    with open(terms_file, "a", encoding="utf-8") as f:
+        f.write(append_block)
+    
+    print(f"  [TERMS] Enriched {len(new_terms[:15])} domain terms → {terms_file.name}")
+    return len(new_terms[:15])
 
 
 if __name__ == "__main__":
@@ -306,3 +373,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     profile(input_dir=args.input_dir, corpus_path=args.corpus)
+
